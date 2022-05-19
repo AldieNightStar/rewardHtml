@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>API</title>
+	<style type="text/css">
+		#aa a {
+			color: blue;
+			text-decoration: underline overline;
+			font-size: 52px;
+		}
+		#aa font {
+			font-size: 48px;
+		}
+		#aa {
+			margin-left: 15%;
+			margin-right: 15%;
+			margin-top: 5%;
+			font-size: 24px;
+			color: ;
+		}
+		body {
+			background-color: #94815A;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="aa">
+		<div>
+
+			<center>
+				<img src="coin.png" width="100px">
+				<br>
+				<font color=yellow><b>Hello there</b></font>
+			</center><hr>
+		</div>
+		<div>
+			<center>You are here to take confirm code to get your reward. Please, press enter when your ok.</center>
+		</div><hr>
+		<div><br><center>***</center><br>
+			Be aware that you are going to generator site which redirects you to ad site. It's way i monetize my apps. After it - you will get the code which need to be copied and pasted after all. Press <b>'ENTER'</b> to continue
+		</div>
+
+		<br><br><br>
+		<center><a href="#" id="enter">ENTER</a></center>
+	</div>
+
+	<script type="text/javascript">
+		function getAnchor() {
+		    var currentUrl = document.URL,
+			urlParts   = currentUrl.split('#');
+				
+		    return (urlParts.length > 1) ? urlParts[1] : null;
+		}
+		function getRefAndSaltAndTime(str) {
+			var arr = str.split("_");
+			if (arr.length < 3) {
+				return null;
+			}
+			return [arr[0], parseInt(arr[1]), parseInt(arr[2])]
+		}
+		setTimeout(function() {
+			var anc = getAnchor();
+			if (anc != null && anc.length > 1) {
+				var refSaltTime = getRefAndSaltAndTime(anc)
+				if (refSaltTime == null) {
+					alert("Error while getting special data!");
+					return;
+				}
+				const [ref, salt, time] = getRefAndSaltAndTime(anc)
+
+				// TODO change with normal URL
+				var site = "http://adf.ly/" + ref + "/localhost:8000/generate_done.html#" + anc
+				var enter = document.getElementById("enter")
+				enter.href = site
+				console.log(enter)
+			} else {
+				alert("Invalid invite data!")
+			}
+		}, 250)
+	</script>
+
+</body>
+</html>

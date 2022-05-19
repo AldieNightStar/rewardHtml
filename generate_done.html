@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>API</title>
+	<style type="text/css">
+		#code {
+			font-size: 48px;
+		}
+		#aa font {
+			font-size: 48px;
+		}
+		#aa {
+			margin-left: 15%;
+			margin-right: 15%;
+			margin-top: 5%;
+			font-size: 24px;
+			color: ;
+		}
+		body {
+			background-color: #94815A;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="aa">
+		<div>
+			<center>
+				<img src="coin.png" width="100px">
+				<br>
+				<font color=yellow><b>Done</b></font>
+			</center><hr>
+		</div>
+		<div>
+			<center>Thank you. Your code is:</center>
+			<hr>
+			<center><b id="code">CODE</b></center>
+			<hr>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function getAnchor() {
+		    var currentUrl = document.URL,
+			urlParts   = currentUrl.split('#');
+				
+		    return (urlParts.length > 1) ? urlParts[1] : null;
+		}
+		function getSaltAndTime(str) {
+			var arr = str.split("_");
+			if (arr.length < 2) {
+				return null;
+			}
+			return [parseInt(arr[0]), parseInt(arr[1])]
+		}
+		function cont(salt, dat) {
+			return Math.floor(dat*salt)%0xFFFF
+		}
+		setTimeout(function() {
+			var anc = getAnchor();
+			if (anc != null) {
+				const [salt, time] = getSaltAndTime(anc);
+				var result = cont(salt, time)
+				document.getElementById("code").innerHTML = result
+			} else {
+				alert("Invalid invite data!")
+			}
+		}, 250)
+	</script>
+
+</body>
+</html>
