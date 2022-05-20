@@ -50,10 +50,10 @@
 		}
 		function getSaltAndTime(str) {
 			var arr = str.split("_");
-			if (arr.length < 2) {
+			if (arr.length < 3) {
 				return null;
 			}
-			return [parseInt(arr[0]), parseInt(arr[1])]
+			return [arr[0], parseInt(arr[1]), parseInt(arr[2])]
 		}
 		function cont(salt, dat) {
 			return Math.floor(dat*salt)%0xFFFF
@@ -61,7 +61,7 @@
 		setTimeout(function() {
 			var anc = getAnchor();
 			if (anc != null) {
-				const [salt, time] = getSaltAndTime(anc);
+				const [ref, salt, time] = getSaltAndTime(anc);
 				var result = cont(salt, time)
 				document.getElementById("code").innerHTML = result
 			} else {
