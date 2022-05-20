@@ -74,7 +74,7 @@
 				const [ref, salt, time] = getRefAndSaltAndTime(anc)
 
 				// TODO change with normal URL
-				var site = "http://adf.ly/" + ref + "/" + PREFIX + "generate_done.html#" + anc
+				var site = "http://adf.ly/" + ref + "/" + PREFIX + "generate_done.html?" + anc
 				var enter = document.getElementById("enter")
 				enter.href = site
 				console.log(enter)
