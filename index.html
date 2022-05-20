@@ -52,7 +52,7 @@
 
 		function getAnchor() {
 		    var currentUrl = document.URL,
-			urlParts   = currentUrl.split('#');
+			urlParts   = currentUrl.split('?');
 				
 		    return (urlParts.length > 1) ? urlParts[1] : null;
 		}
