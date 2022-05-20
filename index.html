@@ -48,6 +48,8 @@
 	</div>
 
 	<script type="text/javascript">
+		var PREFIX="aldienightstar.github.io/rewardHtml/"
+
 		function getAnchor() {
 		    var currentUrl = document.URL,
 			urlParts   = currentUrl.split('#');
@@ -72,7 +74,7 @@
 				const [ref, salt, time] = getRefAndSaltAndTime(anc)
 
 				// TODO change with normal URL
-				var site = "http://adf.ly/" + ref + "/localhost:8000/generate_done.html#" + anc
+				var site = "http://adf.ly/" + ref + "/" + PREFIX + "generate_done.html#" + anc
 				var enter = document.getElementById("enter")
 				enter.href = site
 				console.log(enter)
